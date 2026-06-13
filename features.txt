@@ -1,0 +1,14 @@
+Here are the selected features: 
+"Speed_limit", 
+"Weather_conditions", 
+"Road_type", 
+"Urban_or_rural_area", 
+"Vehicle_type", 
+"Age_of_Vehicle", 
+"Engine_Capicity", 
+"Age_of_casualty", 
+"Casualty_class", 
+"Age_of_driver", 
+"Number_of_Vehicles", 
+"Number_of_Casualties", 
+"Accident_Severity"

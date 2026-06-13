@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# MLOps pipeline generated artifacts
+mlops_pipeline/data/*
+!mlops_pipeline/data/.gitkeep
+mlops_pipeline/models/*
+!mlops_pipeline/models/.gitkeep
+mlops_pipeline/monitoring/*
+!mlops_pipeline/monitoring/.gitkeep
+mlops_pipeline/great_expectations/*
+!mlops_pipeline/great_expectations/.gitkeep
+mlops_pipeline/mlruns/
+mlops_pipeline/mlflow.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large data files (use Git LFS or manual download)
+*.csv
+!features.txt
+reports/*.png
+
+# Environment
+.env
+venv/
+.venv/

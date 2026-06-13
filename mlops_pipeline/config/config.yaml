@@ -1,0 +1,70 @@
+database:
+  host: mysql
+  port: 3306
+  user: root
+  password: root
+  database: mlops_container
+
+data:
+  accidents: /opt/airflow/data-parent/Accidents0515.csv
+  casualties: /opt/airflow/data-parent/Casualties0515.csv
+  vehicles: /opt/airflow/data-parent/Vehicles0515.csv
+  features_file: /opt/airflow/data-parent/features.txt
+  combined_table: combined_accident_data
+
+features:
+  - Speed_limit
+  - Weather_conditions
+  - Road_type
+  - Urban_or_rural_area
+  - Vehicle_type
+  - Age_of_Vehicle
+  - Engine_Capicity
+  - Age_of_casualty
+  - Casualty_class
+  - Age_of_driver
+  - Number_of_Vehicles
+  - Number_of_Casualties
+  - Accident_Severity
+
+target: Accident_Severity
+
+preprocessing:
+  test_size: 0.2
+  random_state: 42
+  numeric_impute_strategy: median
+  categorical_impute_strategy: most_frequent
+
+model:
+  type: RandomForestClassifier
+  params:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+
+mlflow:
+  tracking_uri: ./mlflow.db
+  experiment_name: accident_severity_prediction
+
+deployment:
+  host: 0.0.0.0
+  port: 8000
+  model_alias: champion
+
+redis:
+  host: redis
+  port: 6379
+  db: 0
+  password: null
+  cache_ttl_seconds: 3600
+  decode_responses: true
+
+celery:
+  broker_url: redis://redis:6379/1
+  result_backend: redis://redis:6379/2
+  worker_concurrency: 4
+
+monitoring:
+  reference_data_path: data/reference_data.parquet
+  current_data_path: data/current_data.parquet
+  report_path: monitoring/reports

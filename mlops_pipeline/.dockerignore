@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+*.pyo
+.env
+.git
+mlruns
+monitoring/reports
+great_expectations/validation_results.json
+*.parquet
+*.csv
